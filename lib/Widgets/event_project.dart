@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:plan_it/Constants/custom_textstyles.dart';
 import 'package:plan_it/Constants/images.dart';
 import 'package:plan_it/Utilities/extensions.dart';
 import 'package:plan_it/Widgets/widgets.dart';
@@ -22,7 +23,7 @@ class EventProject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 226,
+      width: 226.0.w,
       decoration: BoxDecoration(
         color: AppColors.whiteTextColor,
         borderRadius: BorderRadius.circular(8),
@@ -42,26 +43,26 @@ class EventProject extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 15),
+                    padding: const EdgeInsets.only(left: 15,top: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                          Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.end,
                            children: [
                             icon1,
                             SizedBox(width: 5,),
                              Text(title,
-                             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                             style: titleLargeBold.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w700
                              ),
                              ),
                            ],
-                         ),
-                         const SizedBox(height: 4,),
+                        ),
+                          SizedBox(height: 4.0.h,),
                          Text(subTitle,
-                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                         style: titleMediumBold.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: AppColors.ashTextColor
@@ -70,20 +71,27 @@ class EventProject extends StatelessWidget {
                       ],
                     ),
                   ),
-                      SvgPicture.asset(AppImages.backgroundHeartIcon,width: 113.0.w,height: 113.0.h,)
                 ],
                ),
               ],
             ),
+                Expanded(
+                  child: Positioned(
+                    top: 0,
+                    right: 0,
+                    child: SvgPicture.asset(AppImages.backgroundHeartIcon,width: 113.0.w,height: 113.0.h,
+                                     ),
+                  )),
                 Positioned(
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 5,right: 5),
                     child: ElevatedButton(onPressed: (){}, 
                     style: ButtonStyles.elevatedButtonStyle(
                         backgroundColor: AppColors.appPrimaryColor, 
-                        minimumSize: const Size(200, 40),
+                        minimumSize: const Size(180, 40),
                         borderRadius: BorderRadius.circular(8)
                        ),
                     child: buttonText,

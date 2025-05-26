@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plan_it/Constants/app_Strings.dart';
 import 'package:plan_it/Widgets/categories.dart';
 import 'package:plan_it/Widgets/event_project.dart';
 import 'package:plan_it/Utilities/extensions.dart';
-import '../Constants/app_Strings.dart';
 import '../Constants/colors.dart';
 import '../Constants/custom_textstyles.dart';
-import '../Constants/images.dart';
-import 'widgets.dart';
-import '../Models/schedule/schedule.dart';
+import 'schedule.dart';
 import '../Models/schedule/schedule_model.dart';
-import '../Models/home/categories.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key,
@@ -99,10 +94,10 @@ class _HomeState extends State<Home> {
                 ),
                 TextButton(onPressed: (){}, 
                 child: Text('See more',
-                          style: GoogleFonts.inter(
-                            color: const Color(0XFF000980),
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                          style: titleSmall.copyWith(
+                            color: AppColors.appPrimaryColor,
+                            // fontWeight: FontWeight.w400,
+                            fontSize: 15,
                           ),))
               ],
             ),

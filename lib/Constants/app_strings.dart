@@ -7,8 +7,6 @@ import 'package:plan_it/Constants/images.dart';
 import 'package:plan_it/Widgets/categories.dart';
 import 'package:plan_it/Widgets/event_project.dart';
 import 'package:plan_it/Utilities/extensions.dart';
-
-import '../Models/home/categories.dart';
 import '../Models/schedule/schedule_model.dart';
 
 List<ScheduleModel> schedule = [
@@ -16,6 +14,7 @@ List<ScheduleModel> schedule = [
      ScheduleModel(icon1: SvgPicture.asset(AppImages.runnngIcon), title: 'Draft Proposal', subTitle: 'Time : 10:00 AM', icon: SvgPicture.asset(AppImages.clockIcon),time: '4am-6am', icon2: SvgPicture.asset(AppImages.arrowsRunningIcon,height: 100.0.h,width: 137.0.w,),),
      ScheduleModel(icon1: SvgPicture.asset(AppImages.walkingIcon), title: 'Draft Proposal', subTitle: 'Time : 10:00 AM', icon: SvgPicture.asset(AppImages.clockIcon),time: '4am-6am',icon2: SvgPicture.asset(AppImages.arrowsRunningIcon,height: 100.0.h,width: 137.0.w,),),
      ScheduleModel(icon1: SvgPicture.asset(AppImages.walkingIcon), title: 'Draft Proposal', subTitle: 'Time : 10:00 AM', icon: SvgPicture.asset(AppImages.clockIcon),time: '4am-6am', icon2: SvgPicture.asset(AppImages.arrowsRunningIcon,height: 100.0.h,width: 137.0.w,),),
+     ScheduleModel(distance: '2km', avgPace: '1km Cal', calories1: '100 Cal', calories2: '100 Cal', km: '3km'),
   ];
 
 List<Categories> categories = [

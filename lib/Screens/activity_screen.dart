@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plan_it/Constants/custom_textstyles.dart';
-
-import '../Models/activity/activity.dart';
+import 'package:plan_it/Screens/pages_screen.dart';
+import '../Widgets/activity/activity.dart';
 
 class ActivityScreen extends StatefulWidget {
   const ActivityScreen({super.key});
@@ -13,23 +13,26 @@ class ActivityScreen extends StatefulWidget {
 class _ActivityScreenState extends State<ActivityScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-             leading: IconButton(onPressed: (){
-                  Navigator.pop(context);
-                }, 
-                icon: Icon(Icons.arrow_back)),//change to svg image
-      
-            centerTitle: true,
-            title: Text('Activity',
-            style: titleLargeBold.copyWith(
-              fontSize: 18,
-            ),
-            ),
+    return Column(
+        children: [
+          Row(
+            children: [
+              IconButton(onPressed: (){
+                controller.currentPageIndex.value = controller.previousPageIndex.value;
+
+              }, icon: Icon(Icons.arrow_back)),
+              Padding(
+                padding: const EdgeInsets.only(left: 100),
+                child: Text('Activity',
+                style: titleLargeBold.copyWith(
+                  fontSize: 18,
+                ),
+                ),
+              ),
+            ],
           ),
-       // body: Activity()
-      ),
-    );
+         Activity(),
+        ],
+      );
   }
 }

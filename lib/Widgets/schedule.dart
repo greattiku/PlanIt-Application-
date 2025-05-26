@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plan_it/Models/schedule/schedule_model.dart';
+import 'package:plan_it/Screens/activity2_screen.dart';
 import 'package:plan_it/Utilities/extensions.dart';
 
-import '../../Constants/colors.dart';
+import '../Constants/colors.dart';
 
 class Schedule extends StatelessWidget {
   const Schedule({super.key,
@@ -18,9 +19,9 @@ class Schedule extends StatelessWidget {
       int progressCovered = 1;
      double progress= progressCovered/totalProgress;
     return InkWell(
-      // onTap: (){
-      //   Navigator.push(context, MaterialPageRoute(builder: (context)=> Activity2Screen(scheduleModel: scheduleModel)));
-      // },
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> Activity2Screen(scheduleModel: scheduleModel)));
+      },
       child: Container(
         width: 390.0.w,
         height: 105.0.h,

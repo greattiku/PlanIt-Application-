@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:plan_it/Constants/images.dart';
+import 'package:plan_it/Widgets/activity/activity.dart';
+import 'package:plan_it/Screens/community_screen.dart';
 
 import '../Constants/colors.dart';
 import '../Constants/custom_textstyles.dart';
@@ -15,16 +19,19 @@ class PagesScreen extends StatefulWidget {
 }
     var controller = Get.find<PagesController>();
 class _PagesScreenState extends State<PagesScreen> {
+
   final List<Widget> pages = [
       const HomeScreen(),
-      const ActivityScreen()
+      const ActivityScreen(),
+      const CommunityScreen()
     ];
 
   @override
   Widget build(BuildContext context) {
+    
     return SafeArea(
       child: Scaffold(
-         body: pages[controller.currentPageIndex.value],
+         body: Obx(()=> pages[controller.currentPageIndex.value]),
         bottomNavigationBar: Obx(()=>
            SizedBox(
             height: 92,
@@ -35,7 +42,8 @@ class _PagesScreenState extends State<PagesScreen> {
               selectedItemColor: AppColors.appPrimaryColor,
               currentIndex: controller.currentPageIndex.value,
               onTap: (index) {
-                controller.currentPageIndex.value = index;
+                controller.changePageIndex(index);
+
                   },
               items: const [
                 BottomNavigationBarItem(
@@ -43,6 +51,9 @@ class _PagesScreenState extends State<PagesScreen> {
                   icon: Icon(Icons.home)),
                 BottomNavigationBarItem(
                   label: 'Activty',
+                  icon: Icon(Icons.insert_chart_rounded)),
+                BottomNavigationBarItem(
+                  label: 'Community',
                   icon: Icon(Icons.insert_chart_rounded))
               ]),
            ),
