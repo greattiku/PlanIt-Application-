@@ -15,4 +15,5 @@ class CommunityController extends GetxController{
   getTextColor(int index){
     return selectedIndex.value == index ? AppColors.whiteTextColor : AppColors.blackTextColor;
   }
+
 }

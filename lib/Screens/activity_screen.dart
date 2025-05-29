@@ -13,26 +13,30 @@ class ActivityScreen extends StatefulWidget {
 class _ActivityScreenState extends State<ActivityScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: [
-          Row(
+    return SingleChildScrollView(
+      child: Expanded(
+        child: Column(
             children: [
-              IconButton(onPressed: (){
-                controller.currentPageIndex.value = controller.previousPageIndex.value;
-
-              }, icon: Icon(Icons.arrow_back)),
-              Padding(
-                padding: const EdgeInsets.only(left: 100),
-                child: Text('Activity',
-                style: titleLargeBold.copyWith(
-                  fontSize: 18,
-                ),
-                ),
+              Row(
+                children: [
+                  IconButton(onPressed: (){
+                    controller.currentPageIndex.value = controller.previousPageIndex.value;
+        
+                  }, icon: Icon(Icons.arrow_back)),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 100),
+                    child: Text('Activity',
+                    style: titleLargeBold.copyWith(
+                      fontSize: 18,
+                    ),
+                    ),
+                  ),
+                ],
               ),
+             Activity(),
             ],
           ),
-         Activity(),
-        ],
-      );
+      ),
+    );
   }
 }

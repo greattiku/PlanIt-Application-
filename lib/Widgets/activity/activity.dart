@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:plan_it/Controllers/customcalendar_controller.dart';
 import 'package:plan_it/Utilities/extensions.dart';
+import 'package:plan_it/Widgets/custom_calendar.dart';
 
 import '../../Constants/app_Strings.dart';
 import '../../Constants/colors.dart';
@@ -23,6 +26,7 @@ class Activity extends StatefulWidget {
 //   ];
 
 class _ActivityState extends State<Activity> {
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -50,7 +54,7 @@ class _ActivityState extends State<Activity> {
                 fontWeight: FontWeight.w500,
               ),
               )),
-
+            
               ElevatedButton(
               onPressed: (){}, 
               style: ButtonStyles.elevatedButtonStyle(
@@ -71,9 +75,15 @@ class _ActivityState extends State<Activity> {
             ],
           ),
            SizedBox(height: 16.0.h,),
+
+          CustomCalendar(),
+            
+            SizedBox(height: 16.0.h,),
+            //height: 390.0.h,
             SizedBox(
               height: 390.0.h,
               child: ListView.separated(
+                shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context,index){
                   final ScheduleModel  scheduleModel = ScheduleModel(
@@ -94,9 +104,9 @@ class _ActivityState extends State<Activity> {
               itemCount: schedule.length
               ),
             ),
-
+            
             SizedBox(height: 16.0.h,),
-
+            
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: ElevatedButton(onPressed: (){}, 
@@ -109,7 +119,7 @@ class _ActivityState extends State<Activity> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.add_circle_outline_rounded,color: AppColors.whiteTextColor,),//change to svg image
-
+            
                   SizedBox(width: 7.0.w,),
                   Text('Add New Fitness Goal',
                   style: titleSmall.copyWith(

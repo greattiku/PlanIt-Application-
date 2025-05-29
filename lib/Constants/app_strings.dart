@@ -5,9 +5,12 @@ import 'package:plan_it/Constants/colors.dart';
 import 'package:plan_it/Constants/custom_textstyles.dart';
 import 'package:plan_it/Constants/images.dart';
 import 'package:plan_it/Widgets/categories.dart';
+import 'package:plan_it/Widgets/custom_calendar.dart';
 import 'package:plan_it/Widgets/event_project.dart';
 import 'package:plan_it/Utilities/extensions.dart';
 import '../Models/schedule/schedule_model.dart';
+import '../Widgets/custom_calendar.dart';
+import 'package:intl/intl.dart';
 
 List<ScheduleModel> schedule = [
      ScheduleModel(icon1: SvgPicture.asset(AppImages.walkingIcon), title: 'Morning Meeting', subTitle: 'Time : 10:00 AM',progressLabel: 'Status: 1hr',),
@@ -48,3 +51,4 @@ List<Categories> categories = [
      icon1: SvgPicture.asset(AppImages.runnngIcon)),
 
   ];
+
