@@ -3,8 +3,16 @@ import 'package:get/get.dart';
 import 'package:plan_it/Constants/colors.dart';
 import 'package:plan_it/Models/schedule/user_model.dart';
 
+import '../Constants/app_strings.dart';
+
 class CommunityController extends GetxController{
   var selectedIndex = 0.obs;
+  
+
+  void toggleFollow(int index){
+    userList[index].isFollowing = !userList[index].isFollowing;
+    userList.refresh();
+  }
 
   void changeSelectedIndex(int index){
     selectedIndex.value = index;
@@ -21,13 +29,6 @@ class CommunityController extends GetxController{
     var userFollowing = ''.obs;
     
     UserModel userModel = UserModel();
-     followed(){
-        if(userModel.isFollowing == true){
-         userFollowing.value = 'Following'; 
-        } 
-         else{
-          userFollowing.value = 'Follow';
-         }
-    }
+   
 
 }

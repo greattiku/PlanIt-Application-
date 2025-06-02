@@ -8,14 +8,19 @@ import 'package:plan_it/Controllers/cmmunity_controller.dart';
 import 'package:plan_it/Models/schedule/user_model.dart';
 
 class UserList extends StatelessWidget {
-  UserList({super.key, required this.userModel});
+  UserList({
+    super.key,
+    required this.userModel,
+    required this.index,
+  });
 
   final UserModel userModel;
+  final int index;
 
   var controller = Get.find<CommunityController>();
 
   var userFollowText = "";
-  
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -30,47 +35,28 @@ class UserList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(userModel.name ?? ''),
-                userModel.isFollowing == true
-                    ? Text('Follows you')
-                    : SizedBox(),
-
+                userModel.isFollowing ? Text('Follows you') : SizedBox(),
                 SizedBox(height: 10),
-
-                  InkWell(
-              onTap: (){
-               setState(){
-                  userModel.isFollowing ? userFollowText = "Following" : "Follow"
-              },
-              child: Container(
-                width: 80,
-                height: 32,
-                decoration: BoxDecoration(
-                  color: AppColors.appPrimaryColor
-                          
-                ),
-                child: Text(
-                      userFollowText,
+                InkWell(
+                  onTap: () => controller.toggleFollow(index),
+                  child: Container(
+                    width: 80,
+                    height: 32,
+                    decoration: BoxDecoration(
+                        color: userModel.isFollowing
+                            ? AppColors.appPrimaryColor
+                            : AppColors.ashTextColor),
+                    child: Text(
+                      userModel.isFollowing ? "Following" : "Foloow",
                       style: titleSmallBold.copyWith(
-                        color:
-                           AppColors.whiteTextColor
-                      ),
-                    );
-                  
-            
-                
-              ),
-            ),
-
-                
+                          color: AppColors.whiteTextColor),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
         ),
-
-        
-          
-        
-
       ],
     );
   }

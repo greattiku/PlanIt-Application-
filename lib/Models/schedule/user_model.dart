@@ -7,7 +7,7 @@ class UserModel {
   final String? password;
   final String? phoneNumber;
   final String? profilePicture;
-   bool? isFollowing;
+  bool isFollowing;
 
   UserModel({
     this.name,
@@ -15,7 +15,7 @@ class UserModel {
     this.password,
     this.phoneNumber,
     this.profilePicture,
-    this.isFollowing,
+    this.isFollowing = false,
   });
 
 

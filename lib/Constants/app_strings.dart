@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plan_it/Constants/colors.dart';
 import 'package:plan_it/Constants/custom_textstyles.dart';
@@ -53,7 +54,7 @@ List<Categories> categories = [
 
   ];
 
-   List<UserModel> user = [
+   var userList = <UserModel>[
     UserModel(name: 'Jacob Banks', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: true ),
     UserModel(name: 'Mary Jane', email: 'great@gmail.com', profilePicture: 'aasset/svgs/profile_pic2.svg', isFollowing: false),
     UserModel(name: 'Arthur Milo', email: 'great@gmail.com', profilePicture: 'aasset/svgs/profile_pics3.svg',isFollowing: false ),
@@ -70,5 +71,4 @@ List<Categories> categories = [
     UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: true),
     UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: false),
     UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: true),
-  
-  ];
+  ].obs;
