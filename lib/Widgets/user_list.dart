@@ -13,6 +13,9 @@ class UserList extends StatelessWidget {
   final UserModel userModel;
 
   var controller = Get.find<CommunityController>();
+
+  var userFollowText = "";
+  
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -30,41 +33,41 @@ class UserList extends StatelessWidget {
                 userModel.isFollowing == true
                     ? Text('Follows you')
                     : SizedBox(),
-              ],
-            ),
-          ],
-        ),
 
-          InkWell(
+                SizedBox(height: 10),
+
+                  InkWell(
               onTap: (){
-                controller.followed();
+               setState(){
+                  userModel.isFollowing ? userFollowText = "Following" : "Follow"
               },
               child: Container(
                 width: 80,
                 height: 32,
                 decoration: BoxDecoration(
-                  color:
-                      userModel.isFollowing == true
-                          ? AppColors.appPrimaryColor
-                          : Color(0XFFF1F1F1),
+                  color: AppColors.appPrimaryColor
+                          
                 ),
-                child: Obx(
-                  () {
-                    return Text(
-                      controller.userFollowing.value,
+                child: Text(
+                      userFollowText,
                       style: titleSmallBold.copyWith(
                         color:
-                            userModel.isFollowing == true
-                                ? AppColors.whiteTextColor
-                                : AppColors.appPrimaryColor,
+                           AppColors.whiteTextColor
                       ),
                     );
-                  }
-                ),
+                  
             
                 
               ),
             ),
+
+                
+              ],
+            ),
+          ],
+        ),
+
+        
           
         
 
