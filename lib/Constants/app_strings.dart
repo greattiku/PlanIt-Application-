@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:plan_it/Constants/colors.dart';
 import 'package:plan_it/Constants/custom_textstyles.dart';
 import 'package:plan_it/Constants/images.dart';
+import 'package:plan_it/Models/schedule/user_model.dart';
 import 'package:plan_it/Widgets/categories.dart';
 import 'package:plan_it/Widgets/custom_calendar.dart';
 import 'package:plan_it/Widgets/event_project.dart';
@@ -52,3 +53,22 @@ List<Categories> categories = [
 
   ];
 
+   List<UserModel> user = [
+    UserModel(name: 'Jacob Banks', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: true ),
+    UserModel(name: 'Mary Jane', email: 'great@gmail.com', profilePicture: 'aasset/svgs/profile_pic2.svg', isFollowing: false),
+    UserModel(name: 'Arthur Milo', email: 'great@gmail.com', profilePicture: 'aasset/svgs/profile_pics3.svg',isFollowing: false ),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic4.svg', isFollowing: true ),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'aasset/svgs/profile_pic5.svg',isFollowing: false ),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic6.svg',isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic7.svg', isFollowing: true),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: true),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg',isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg',isFollowing: true ),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg',isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: true ),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg',isFollowing: false ),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: true),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: true),
+  
+  ];

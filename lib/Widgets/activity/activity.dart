@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:plan_it/Controllers/customcalendar_controller.dart';
 import 'package:plan_it/Utilities/extensions.dart';
 import 'package:plan_it/Widgets/custom_calendar.dart';

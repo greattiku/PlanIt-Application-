@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plan_it/Screens/pages_screen.dart';
+import 'package:plan_it/Screens/sign_up_screen.dart';
 import 'package:plan_it/bindings/app_bindings.dart';
 
 void main() {

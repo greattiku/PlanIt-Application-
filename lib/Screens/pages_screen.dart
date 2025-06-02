@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:plan_it/Constants/images.dart';
+import 'package:plan_it/Screens/sign_up_screen.dart';
 import 'package:plan_it/Widgets/activity/activity.dart';
 import 'package:plan_it/Screens/community_screen.dart';
 
@@ -26,6 +27,11 @@ class _PagesScreenState extends State<PagesScreen> {
       const CommunityScreen()
     ];
 
+  // @override
+  // void initState(){
+  //   super.initState();
+  //   SignUpScreen();
+  // }
   @override
   Widget build(BuildContext context) {
     
