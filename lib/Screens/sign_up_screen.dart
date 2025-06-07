@@ -8,8 +8,14 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: SignUp(),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: (){
+          FocusScope.of(context).unfocus();
+        },
+        child: Scaffold(
+          body: SignUp(),
+        ),
       ),
     );
   }
