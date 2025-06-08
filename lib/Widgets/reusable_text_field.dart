@@ -33,7 +33,7 @@ class _ReusableTextFieldState extends State<ReusableTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
             Text(widget.text ?? '',
-                style: titleSmall.copyWith(
+                style: titleSmallBold.copyWith(
                   fontSize: 16
                 ),
             ),
@@ -109,7 +109,7 @@ class _ConfirmPasswordFieldState extends State<ConfirmPasswordField> {
       crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                   Text(widget.text ?? '',
-                style: titleSmall.copyWith(
+                style: titleSmallBold.copyWith(
                   fontSize: 16
                 ),),
                    TextFormField(
