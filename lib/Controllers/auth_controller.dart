@@ -7,6 +7,8 @@ class AuthController extends GetxController{
     var isPasswordObscured = true.obs;
     var isConfirmPasswordObscured = true.obs;
     var isPasswordMatch = false.obs;
+    var isOtpCorrect = false.obs;
+    var validValue ='1234';
 
     //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   
@@ -19,17 +21,23 @@ class AuthController extends GetxController{
     isConfirmPasswordObscured.value =!isConfirmPasswordObscured.value;
   }
 
-
-  
-
   @override
   void dispose(){
     emailController.dispose();
     nameController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
+    for (var controllers in otpControllers) {
+      controllers.dispose();
+    }
     super.dispose();
   }
 
+    void clearOtpFields(){
+    for (var controllers in otpControllers) {
+      controllers.clear();
+    }
+  }
+  
 
 }

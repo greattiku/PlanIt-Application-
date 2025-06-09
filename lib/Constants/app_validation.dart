@@ -11,6 +11,7 @@ import '../Controllers/auth_controller.dart';
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final TextEditingController confirmPasswordController = TextEditingController();
+    List<TextEditingController> otpControllers = List.generate(4, (index) => TextEditingController());
 
 
 
@@ -62,6 +63,46 @@ import '../Controllers/auth_controller.dart';
       } 
 
 
+        String? otpValidator(String? value){
+          print('validating otp===================================================');
+          print('validating otp===================================================');
+         if(value == null|| value.isEmpty){
+          print('please enter a value');
+           return 'Please enter a value';
+        }
+        print('otp returning null');
+        return null;
+     }
+//        String? otpValidator(String? value){
+//           print('validating otp===================================================');
+//            print('validating otp===================================================');
+//   bool allEmpty = otpControllers.every((controller) => controller.text.isEmpty);
+//   if(allEmpty){
+//     print('enter a value===============');
+//     return 'Please enter a value';
+//   }
+//   return null;
+// }
+    
+    String? validateOtp() {
+        String otpValue = '';
+      for (var controller in otpControllers) {
+        otpValue += controller.text;
+      }
+      if (otpValue == controller.validValue) {
+        controller.isOtpCorrect.value = true;
+        Get.snackbar('sucess', 'Account ce');
+
+      } else if (otpValue != controller.validValue){
+          controller.isOtpCorrect.value = false;
+          Get.snackbar('failed', 'invalid OTP');
+          return 'invalid otp';
+          
+        } 
+        return null;
+    }
+
+
       void signUp(String data,String value){
       Get.snackbar(
         '',
@@ -84,6 +125,8 @@ import '../Controllers/auth_controller.dart';
   }
 
     void signIn(String data,String value){
+       emailController.text;
+       passwordController.text;
       Get.snackbar(
         '',
         '',
@@ -103,3 +146,5 @@ import '../Controllers/auth_controller.dart';
         duration: Duration(seconds: 3),
         );
   }
+
+

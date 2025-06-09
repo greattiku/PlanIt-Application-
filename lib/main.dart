@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:plan_it/Screens/otp_screen.dart';
 import 'package:plan_it/Screens/pages_screen.dart';
 import 'package:plan_it/Screens/sign_in_screen.dart';
 import 'package:plan_it/Screens/sign_up_screen.dart';
+import 'package:plan_it/Screens/splash_screen.dart';
 import 'package:plan_it/bindings/app_bindings.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   MyBindings().dependencies();
   runApp(const MyApp());
 }
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       //initialBinding: MyBindings(),
-      home: SignUpScreen(),
+      home: SplashScreen(),
     );
   }
 }
