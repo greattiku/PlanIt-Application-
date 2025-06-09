@@ -45,20 +45,39 @@ class Otp extends StatelessWidget {
                 )
               
             ),
-            
+            SizedBox(height: 10.0.h,),
+            buildTimer(),
+
+            SizedBox(height: 10.0.h,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Didn\'t recieve OTP?',
+                    style: titleSmall.copyWith(
+                      color: AppColors.ashTextColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500
+                      ),
+                  ),
+                  
+                  TextButton(onPressed: (){
+                   // Get.to(SignUpScreen());
+                  }, 
+                  child: Text('Resend OTP',
+                  style: titleSmallBold.copyWith(
+                    color: AppColors.appPrimaryColor,
+                    fontSize: 16,
+                      fontWeight: FontWeight.w500
+                  ),))
+                  
+                ],
+              ),
+
             SizedBox(height: 15.0.h,),
                    ElevatedButton(onPressed: (){
-                //  Navigator.push(context, MaterialPageRoute(builder: (context)=> Activity3Screen(scheduleModel: sch)));
-                    bool allEmpty = otpControllers.every((controller) => controller.text.isEmpty);
-  if(allEmpty){
-   Get.snackbar('Failed','please enter a value');
-  }
-  
-                    if(formKey.currentState!.validate()){
-                      formKey.currentState!.save();
+                
                         validateOtp();
-                        //signUp('','');
-                    }
+                     
                 }, 
                 style: ButtonStyles.elevatedButtonStyle(
                   backgroundColor: AppColors.appPrimaryColor,
@@ -86,129 +105,93 @@ class Otp extends StatelessWidget {
     );
   }
 
+  Widget buildTimer(){
+    return Center(
+      child: Container(
+        width: 85.0.w,
+        height: 50.0.h,
+        decoration: BoxDecoration(
+          color: AppColors.borderColor,//Color(0XFFF1F1F1),
+          borderRadius: BorderRadius.circular(100)
+        ),
+        child: Row(mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.timer_outlined,color: AppColors.appPrimaryColor,),
+            SizedBox(width: 2.0.w,),
+            Text('1:00',
+            style: titleSmallBold.copyWith(
+              color: AppColors.appPrimaryColor,
+              fontWeight: FontWeight.w400,
+            ),)
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildOtpUi(BuildContext context,int index){
     return Column(
       children: [
         SizedBox(
         height: 68.0.h,
         width: 64.0.w,
-        child: TextFormField(
-          controller: otpControllers[index],
-          cursorColor: AppColors.appPrimaryColor,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: otpValidator,
-          onChanged: (value){
-            if(value.length == 1){
-              FocusScope.of(context).nextFocus();
-            }else if (value.isEmpty) {
-              FocusScope.of(context).previousFocus();
-            }
+        child: Obx(()=>
+           TextFormField(
+            controller: otpControllers[index],
+            cursorColor: AppColors.appPrimaryColor,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            onChanged: (value){
+              if(value.length == 1){
+                FocusScope.of(context).nextFocus();
+              }else if (value.isEmpty) {
+                FocusScope.of(context).previousFocus();
+              }
+          
+            },
+            onSaved: (pin){
+              print('success $pin=======================');
+            },
+            keyboardType: TextInputType.number,
+            textAlign: TextAlign.center,
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(1),
+              FilteringTextInputFormatter.digitsOnly,
+            ],
+            decoration: otpDecoration()
+          ),
+        ),
+        ),
         
-          },
-          onSaved: (pin){
-            print('success $pin=======================');
-          },
-          keyboardType: TextInputType.number,
-          textAlign: TextAlign.center,
-          inputFormatters: [
-            LengthLimitingTextInputFormatter(1),
-            FilteringTextInputFormatter.digitsOnly,
-          ],
-          decoration: InputDecoration(
+      ],
+    );
+  }
+
+  InputDecoration otpDecoration(){
+    return InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
                     width: 1,
-                    color: AppColors.borderColor,
+                    color:  controller.isOtpCorrect.value ? Colors.green : AppColors.borderColor,
                   ),
             ),
             focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
                     width: 1,
-                    color: AppColors.appPrimaryColor,
+                    color:  AppColors.appPrimaryColor,
                   )
                 ),
+
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
                     width: 1,
-                    color: Colors.red
-                  )
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
-                    width: 1,
-                    color: Colors.red
+                    color: controller.isOtpCorrect.value ? Colors.transparent : Colors.red ,
                   )
                 )
-          ),
-        ),
-        )
-      ],
-    );
+                
+          );
   }
 }
 
-// class ReusableOtpTextField extends StatelessWidget {
-//   const ReusableOtpTextField({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//       children: [
-//         SizedBox(
-//         height: 68.0.h,
-//         width: 64.0.w,
-//         child: TextFormField(
-//           cursorColor: AppColors.appPrimaryColor,
-//           onChanged: (value){
-//             if(value.length == 1){
-//               FocusScope.of(context).nextFocus();
-//             }
-//           },
-//           onSaved: (pin1){},
-//           keyboardType: TextInputType.number,
-//           textAlign: TextAlign.center,
-//           inputFormatters: [
-//             LengthLimitingTextInputFormatter(1),
-//             FilteringTextInputFormatter.digitsOnly,
-//           ],
-//           decoration: InputDecoration(
-//             enabledBorder: OutlineInputBorder(
-//               borderRadius: BorderRadius.circular(8),
-//                   borderSide: BorderSide(
-//                     width: 1,
-//                     color: AppColors.borderColor,
-//                   ),
-//             ),
-//             focusedBorder: OutlineInputBorder(
-//                   borderRadius: BorderRadius.circular(8),
-//                   borderSide: BorderSide(
-//                     width: 1,
-//                     color: AppColors.appPrimaryColor,
-//                   )
-//                 ),
-//                 errorBorder: OutlineInputBorder(
-//                   borderRadius: BorderRadius.circular(8),
-//                   borderSide: BorderSide(
-//                     width: 1,
-//                     color: Colors.red
-//                   )
-//                 ),
-//                 focusedErrorBorder: OutlineInputBorder(
-//                   borderRadius: BorderRadius.circular(8),
-//                   borderSide: BorderSide(
-//                     width: 1,
-//                     color: Colors.red
-//                   )
-//                 )
-//           ),
-//         ),
-//         ),
-//       ],
-//     );
-//   }
-// }
