@@ -52,9 +52,9 @@ class SignIn extends StatelessWidget {
                       isPasswordField: true,
                       icon: 
                         IconButton(onPressed: (){
-                         controller.passwordToggleObscure();
+                         validationController.passwordToggleObscure();
                          }, icon: Icon(
-                           controller.isPasswordObscured.value ? Icons.visibility_off : Icons.visibility,
+                           validationController.isPasswordObscured.value ? Icons.visibility_off : Icons.visibility,
                           )),
                             
                      validator: validatePassword

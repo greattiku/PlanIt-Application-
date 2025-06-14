@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -5,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:plan_it/Constants/app_validation.dart';
 import 'package:plan_it/Constants/colors.dart';
 import 'package:plan_it/Constants/custom_textstyles.dart';
+import 'package:plan_it/Screens/pages_screen.dart';
+import 'package:plan_it/Screens/splash_screen.dart';
 import 'package:plan_it/Utilities/extensions.dart';
 import 'package:plan_it/Widgets/sign_up.dart';
 import 'package:plan_it/Widgets/widgets.dart';
@@ -13,8 +17,6 @@ class Otp extends StatelessWidget {
    Otp({super.key});
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -61,7 +63,7 @@ class Otp extends StatelessWidget {
                   ),
                   
                   TextButton(onPressed: (){
-                   // Get.to(SignUpScreen());
+                   validationController.isTimerRunning ? null : resetTimer();
                   }, 
                   child: Text('Resend OTP',
                   style: titleSmallBold.copyWith(
@@ -75,8 +77,17 @@ class Otp extends StatelessWidget {
 
             SizedBox(height: 15.0.h,),
                    ElevatedButton(onPressed: (){
-                
-                        validateOtp();
+                final completer = Completer<String>();
+                          if (validateOtp()) {
+                          //  signUp('', '');
+      Get.offAll(SplashScreen());
+    } else {
+      // Handle invalid OTP (e.g., show error message)
+      completer.completeError('invalid otp');
+     // Get.snackbar('Error', 'Invalid OTP');
+    }
+  
+
                      
                 }, 
                 style: ButtonStyles.elevatedButtonStyle(
@@ -118,11 +129,12 @@ class Otp extends StatelessWidget {
           children: [
             Icon(Icons.timer_outlined,color: AppColors.appPrimaryColor,),
             SizedBox(width: 2.0.w,),
-            Text('1:00',
-            style: titleSmallBold.copyWith(
-              color: AppColors.appPrimaryColor,
-              fontWeight: FontWeight.w400,
-            ),)
+            Obx(()=>
+               Text(validationController.timeLeft.value.toString(),
+              style: titleSmallBold.copyWith(
+                color: AppColors.appPrimaryColor,
+              ),),
+            )
           ],
         ),
       ),
@@ -172,7 +184,7 @@ class Otp extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
                     width: 1,
-                    color:  controller.isOtpCorrect.value ? Colors.green : AppColors.borderColor,
+                    color:  validationController.isOtpCorrect.value ? Colors.green : AppColors.borderColor,
                   ),
             ),
             focusedBorder: OutlineInputBorder(
@@ -187,7 +199,7 @@ class Otp extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
                     width: 1,
-                    color: controller.isOtpCorrect.value ? Colors.transparent : Colors.red ,
+                    color: validationController.isOtpCorrect.value ? Colors.transparent : Colors.red ,
                   )
                 )
                 

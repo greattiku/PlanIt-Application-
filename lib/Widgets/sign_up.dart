@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:plan_it/Constants/app_validation.dart';
 import 'package:plan_it/Constants/colors.dart';
 import 'package:plan_it/Constants/custom_textstyles.dart';
+import 'package:plan_it/Screens/otp_screen.dart';
 import 'package:plan_it/Screens/sign_in_screen.dart';
 import 'package:plan_it/Utilities/extensions.dart';
 import 'package:plan_it/Widgets/reusable_text_field.dart';
@@ -63,9 +64,9 @@ class SignUp extends StatelessWidget {
                     isPasswordField: true,
                     icon: 
                              IconButton(onPressed: (){
-                              controller.passwordToggleObscure();
+                              validationController.passwordToggleObscure();
                             }, icon: Icon(
-                              controller.isPasswordObscured.value ? Icons.visibility_off : Icons.visibility,
+                              validationController.isPasswordObscured.value ? Icons.visibility_off : Icons.visibility,
                             )),
                           
                    validator: validatePassword
@@ -80,9 +81,9 @@ class SignUp extends StatelessWidget {
                   text: 'Confirm Pasword',
                   suffixIcon: 
                              IconButton(onPressed: (){
-                              controller.confirmPasswordToggleObscure();
+                              validationController.confirmPasswordToggleObscure();
                             }, icon: Icon(
-                              controller.isConfirmPasswordObscured.value ? Icons.visibility_off : Icons.visibility,
+                              validationController.isConfirmPasswordObscured.value ? Icons.visibility_off : Icons.visibility,
                             )),
                   validator: validateConfirmPassword
                    ),
@@ -94,7 +95,7 @@ class SignUp extends StatelessWidget {
             //  Navigator.push(context, MaterialPageRoute(builder: (context)=> Activity3Screen(scheduleModel: sch)));
                 if(_formKey.currentState!.validate()){
                   _formKey.currentState!.save();
-                    signUp('','');
+                   Get.to(OtpScreen());
                 }
             }, 
             style: ButtonStyles.elevatedButtonStyle(

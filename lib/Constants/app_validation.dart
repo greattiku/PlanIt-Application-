@@ -1,19 +1,17 @@
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plan_it/Constants/colors.dart';
 import '../Controllers/auth_controller.dart';
 
     
-    var controller =  Get.find<AuthController>();
-
+    var validationController =  Get.find<AuthController>();
     final TextEditingController nameController = TextEditingController();
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final TextEditingController confirmPasswordController = TextEditingController();
-  //   final List<TextEditingController> otpControllers = [
-  //   TextEditingController()
-  // ];
     List<TextEditingController> otpControllers = List.generate(4, (index) => TextEditingController(),);
 
 
@@ -58,9 +56,9 @@ import '../Controllers/auth_controller.dart';
         } else if (value != passwordController.text){
           return 'Passwords do not match';
         }else if(value == passwordController.text ){
-          controller.isPasswordMatch.value = true;
+          validationController.isPasswordMatch.value = true;
         } else{
-          controller.isPasswordMatch.value = false;
+          validationController.isPasswordMatch.value = false;
         }
           return null;
       } 
@@ -68,26 +66,48 @@ import '../Controllers/auth_controller.dart';
 
 
 
-       validateOtp() {
-          String otpValue = '';
-        for (var sum in otpControllers) {
-           otpValue += sum.text;
-       }
+      bool  validateOtp() {
+           String otpValue = '';
+         for (var sum in otpControllers) {
+            otpValue += sum.text;
+        }
 
-        if (otpValue.isEmpty || otpValue.length != otpControllers.length) {
+         if (otpValue.isEmpty || otpValue.length != otpControllers.length) {
           Get.snackbar('Failed', 'Please enter a valid value');
+              return false;
+        } else if (otpValue == validationController.validValue) {
+           validationController.isOtpCorrect.value = true;
+          // Get.snackbar('success', 'Account created');
+           signUp('', '');
+              return true;
+        } else {
+           validationController.isOtpCorrect.value = false;
+           Get.snackbar('failed', 'Invalid OTP');
+           validationController.clearOtpFields();
+              return false;
+       }
+   }
 
-       } else if (otpValue == controller.validValue) {
-          controller.isOtpCorrect.value = true;
-          //Get.snackbar('success', 'Account created');
-          signUp('', '');
-          
-       } else {
-          controller.isOtpCorrect.value = false;
-          Get.snackbar('failed', 'Invalid OTP');
-          controller.clearOtpFields();
+      void countDown(){
+        validationController.isTimerRunning = true;
+        Timer.periodic(Duration(seconds: 1), (timer){
+            if(validationController.timeLeft.value > 0){
+              validationController.timeLeft.value--;
+              print('timer is ${validationController.timeLeft.value}');
+            } else{
+              timer.cancel();
+              validationController.isTimerRunning = false;
+            }
+        });
       }
-  }
+
+      void resetTimer(){
+        if (!validationController.isTimerRunning) {
+         validationController.timeLeft.value = 60;
+        //  sendOTP();
+        countDown();
+        }
+      }
 
       void signUp(String data,String value){
       Get.snackbar(
