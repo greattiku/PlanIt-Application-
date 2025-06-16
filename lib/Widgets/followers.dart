@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plan_it/Constants/colors.dart';
@@ -28,7 +30,9 @@ class _FollowersState extends State<Followers> {
             Text('Recent Followers',
             style: titleMediumBold,
             ),
-            TextButton(onPressed: (){}, 
+            TextButton(onPressed: (){
+              Get.to(SeeAllFollowers());
+            }, 
             child: Text('See all',
             style: titleSmall.copyWith(
               color: AppColors.appPrimaryColor
@@ -42,16 +46,88 @@ class _FollowersState extends State<Followers> {
            () {
             return ListView.builder(
               shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: userList.length > 5 ? 5 : userList.length,
+              itemBuilder: (context, index){
+                final  users = userList[index];
+                return SizedBox(
+                  height: 70.0.h,
+                  child: UserList(userModel: users,index: index,));
+              });
+          }
+        ),
+    
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Suggested Followers',
+            style: titleMediumBold,
+            ),
+          ],
+        ),
+        SizedBox(height: 20.0.h,),
+    
+        Obx(
+           () {
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: userList.length,
               itemBuilder: (context, index){
                 final  users = userList[index];
                 return SizedBox(
-                  height: 4.0.h,
+                  height: 70.0.h,
                   child: UserList(userModel: users,index: index,));
               });
           }
         )
     ],
+    );
+  }
+}
+
+class SeeAllFollowers extends StatefulWidget {
+  const SeeAllFollowers({super.key});
+
+  @override
+  State<SeeAllFollowers> createState() => _SeeAllFollowersState();
+}
+
+class _SeeAllFollowersState extends State<SeeAllFollowers> {
+  @override
+  Widget build(BuildContext context) {
+    return  SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title:  Text('Followers',
+                      style: titleMediumBold,
+                      ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Obx(
+                   () {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: userList.length,
+                      itemBuilder: (context, index){
+                        final  users = userList[index];
+                        return SizedBox(
+                          height: 70.0.h,
+                          child: UserList(userModel: users,index: index,));
+                      });
+                  }
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

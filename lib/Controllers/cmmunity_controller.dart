@@ -24,11 +24,11 @@ class CommunityController extends GetxController{
   getTextColor(int index){
     return selectedIndex.value == index ? AppColors.whiteTextColor : AppColors.blackTextColor;
   }
-    var isFollowed = 'Following'.obs;
-    var notFollowed = 'Follow'.obs;
-    var userFollowing = ''.obs;
+    // var isFollowed = 'Following'.obs;
+    // var notFollowed = 'Follow'.obs;
+    // var userFollowing = ''.obs;
     
-    UserModel userModel = UserModel();
+    // UserModel userModel = UserModel();
    
 
 }
