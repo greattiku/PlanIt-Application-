@@ -6,6 +6,7 @@ import 'package:plan_it/Constants/colors.dart';
 import 'package:plan_it/Constants/custom_textstyles.dart';
 import 'package:plan_it/Controllers/cmmunity_controller.dart';
 import 'package:plan_it/Utilities/extensions.dart';
+import 'package:plan_it/Widgets/suggested_followers.dart';
 import 'package:plan_it/Widgets/user_list.dart';
 import '../Constants/app_strings.dart';
 
@@ -72,12 +73,12 @@ class _FollowersState extends State<Followers> {
             return ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: userList.length,
+              itemCount: sugestedFollowers.length,
               itemBuilder: (context, index){
-                final  users = userList[index];
+                final  users = sugestedFollowers[index];
                 return SizedBox(
                   height: 70.0.h,
-                  child: UserList(userModel: users,index: index,));
+                  child: SuggestedFollowers(userModel: users,index: index,));
               });
           }
         )
