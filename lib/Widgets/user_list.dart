@@ -19,12 +19,12 @@ class UserList extends StatelessWidget {
 
   var controller = Get.find<CommunityController>();
 
-  var userFollowText = "";
+ 
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,29 +34,38 @@ class UserList extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(userModel.name ?? ''),
-                userModel.isFollowing ? Text('Follows you') : SizedBox(),
-                SizedBox(height: 10),
-                InkWell(
-                  onTap: () => controller.toggleFollow(index),
-                  child: Container(
-                    width: 80,
-                    height: 32,
-                    decoration: BoxDecoration(
-                        color: userModel.isFollowing
-                            ? AppColors.appPrimaryColor
-                            : AppColors.ashTextColor),
-                    child: Text(
-                      userModel.isFollowing ? "Following" : "Foloow",
-                      style: titleSmallBold.copyWith(
-                          color: AppColors.whiteTextColor),
-                    ),
-                  ),
+                Text(userModel.name ?? '',
+                style: titleSmall.copyWith(
+                  fontWeight: FontWeight.w700
                 ),
+                ),
+                userModel.isFollowing ? Text('Follows you',
+                style: bodySmall.copyWith(
+                  color: AppColors.ashTextColor
+                ),
+                ) : SizedBox(),
+                SizedBox(height: 10),
+                
               ],
             ),
           ],
         ),
+         InkWell(
+            onTap: () => controller.toggleFollow(index),
+            child: Container(
+              width: 80,
+              height: 32,
+              decoration: BoxDecoration(
+                  color: userModel.isFollowing
+                      ? AppColors.appPrimaryColor
+                      : AppColors.ashTextColor),
+              child: Text(
+                userModel.isFollowing ? "Following" : "Follow",
+                style: titleSmallBold.copyWith(
+                    color: AppColors.whiteTextColor),
+                    ),
+                  ),
+                ),
       ],
     );
   }

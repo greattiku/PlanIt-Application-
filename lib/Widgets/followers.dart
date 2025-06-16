@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:plan_it/Constants/colors.dart';
+import 'package:plan_it/Constants/custom_textstyles.dart';
 import 'package:plan_it/Controllers/cmmunity_controller.dart';
 import 'package:plan_it/Utilities/extensions.dart';
 import 'package:plan_it/Widgets/user_list.dart';
@@ -20,7 +22,20 @@ class _FollowersState extends State<Followers> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Recent Followers'),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Recent Followers',
+            style: titleMediumBold,
+            ),
+            TextButton(onPressed: (){}, 
+            child: Text('See all',
+            style: titleSmall.copyWith(
+              color: AppColors.appPrimaryColor
+            ),
+            ))
+          ],
+        ),
         SizedBox(height: 10.0.h,),
     
         Obx(
@@ -30,7 +45,9 @@ class _FollowersState extends State<Followers> {
               itemCount: userList.length,
               itemBuilder: (context, index){
                 final  users = userList[index];
-                return UserList(userModel: users,index: index,);
+                return SizedBox(
+                  height: 4.0.h,
+                  child: UserList(userModel: users,index: index,));
               });
           }
         )
