@@ -147,28 +147,27 @@ class _HomeState extends State<Home> {
               height: 10,
             ),
             
-            SizedBox(
-              height: 390.0.h,
-              child: ListView.separated(
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context,index){
-                  final ScheduleModel  scheduleModel = ScheduleModel(
-                     icon1: schedule[index].icon1, 
-                    title: schedule[index].title, 
-                    subTitle: schedule[index].subTitle,
-                    icon: schedule[index].icon,
-                    progressLabel: schedule[index].progressLabel,
-                    time: schedule[index].time,
-                    icon2: schedule[index].icon2,
-                  );
-                  return Schedule(scheduleModel: scheduleModel);
-                    
-              }, 
-              separatorBuilder: (context,index){
-                return const SizedBox(height: 12,);
-              }, 
-              itemCount: schedule.length
-              ),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              itemBuilder: (context,index){
+                final ScheduleModel  scheduleModel = ScheduleModel(
+                   icon1: schedule[index].icon1, 
+                  title: schedule[index].title, 
+                  subTitle: schedule[index].subTitle,
+                  icon: schedule[index].icon,
+                  progressLabel: schedule[index].progressLabel,
+                  time: schedule[index].time,
+                  icon2: schedule[index].icon2,
+                );
+                return Schedule(scheduleModel: scheduleModel);
+                  
+            }, 
+            separatorBuilder: (context,index){
+              return const SizedBox(height: 12,);
+            }, 
+            itemCount: schedule.length
             ),
           ],
         ),

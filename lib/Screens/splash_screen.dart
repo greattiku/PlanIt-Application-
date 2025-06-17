@@ -23,7 +23,6 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     );
     _animationController.forward();
     Future.delayed(Duration(seconds: 2),(){
-      print('success===============');
       Get.offAll(PagesScreen());
     });
   }

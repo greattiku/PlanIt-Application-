@@ -1,17 +1,18 @@
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plan_it/Constants/colors.dart';
 import '../Controllers/auth_controller.dart';
 
     
-    var controller =  Get.find<AuthController>();
-
+    var validationController =  Get.find<AuthController>();
     final TextEditingController nameController = TextEditingController();
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final TextEditingController confirmPasswordController = TextEditingController();
-    List<TextEditingController> otpControllers = List.generate(4, (index) => TextEditingController());
+    List<TextEditingController> otpControllers = List.generate(4, (index) => TextEditingController(),);
 
 
 
@@ -55,53 +56,58 @@ import '../Controllers/auth_controller.dart';
         } else if (value != passwordController.text){
           return 'Passwords do not match';
         }else if(value == passwordController.text ){
-          controller.isPasswordMatch.value = true;
+          validationController.isPasswordMatch.value = true;
         } else{
-          controller.isPasswordMatch.value = false;
+          validationController.isPasswordMatch.value = false;
         }
           return null;
       } 
 
 
-        String? otpValidator(String? value){
-          print('validating otp===================================================');
-          print('validating otp===================================================');
-         if(value == null|| value.isEmpty){
-          print('please enter a value');
-           return 'Please enter a value';
+
+
+      bool  validateOtp() {
+           String otpValue = '';
+         for (var sum in otpControllers) {
+            otpValue += sum.text;
         }
-        print('otp returning null');
-        return null;
-     }
-//        String? otpValidator(String? value){
-//           print('validating otp===================================================');
-//            print('validating otp===================================================');
-//   bool allEmpty = otpControllers.every((controller) => controller.text.isEmpty);
-//   if(allEmpty){
-//     print('enter a value===============');
-//     return 'Please enter a value';
-//   }
-//   return null;
-// }
-    
-    String? validateOtp() {
-        String otpValue = '';
-      for (var controller in otpControllers) {
-        otpValue += controller.text;
+
+         if (otpValue.isEmpty || otpValue.length != otpControllers.length) {
+          Get.snackbar('Failed', 'Please enter a valid value');
+              return false;
+        } else if (otpValue == validationController.validValue) {
+           validationController.isOtpCorrect.value = true;
+          // Get.snackbar('success', 'Account created');
+           signUp('', '');
+              return true;
+        } else {
+           validationController.isOtpCorrect.value = false;
+           Get.snackbar('failed', 'Invalid OTP');
+           validationController.clearOtpFields();
+              return false;
+       }
+   }
+
+      void countDown(){
+        validationController.isTimerRunning = true;
+        Timer.periodic(Duration(seconds: 1), (timer){
+            if(validationController.timeLeft.value > 0){
+              validationController.timeLeft.value--;
+              print('timer is ${validationController.timeLeft.value}');
+            } else{
+              timer.cancel();
+              validationController.isTimerRunning = false;
+            }
+        });
       }
-      if (otpValue == controller.validValue) {
-        controller.isOtpCorrect.value = true;
-        Get.snackbar('sucess', 'Account ce');
 
-      } else if (otpValue != controller.validValue){
-          controller.isOtpCorrect.value = false;
-          Get.snackbar('failed', 'invalid OTP');
-          return 'invalid otp';
-          
-        } 
-        return null;
-    }
-
+      void resetTimer(){
+        if (!validationController.isTimerRunning) {
+         validationController.timeLeft.value = 60;
+        //  sendOTP();
+        countDown();
+        }
+      }
 
       void signUp(String data,String value){
       Get.snackbar(

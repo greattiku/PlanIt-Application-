@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:plan_it/Screens/sign_up_screen.dart';
 import 'package:plan_it/Widgets/otp.dart';
 
 class OtpScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class OtpScreen extends StatelessWidget {
             padding: const EdgeInsets.only(top: 20),
             child: IconButton(
               onPressed: (){
-                
+                Get.off(SignUpScreen());
             }, 
             icon: Icon(Icons.arrow_back)),
           ),

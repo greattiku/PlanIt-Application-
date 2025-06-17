@@ -24,7 +24,7 @@ class Schedule extends StatelessWidget {
       },
       child: Container(
         width: 390.0.w,
-        height: 105.0.h,
+        height: 110.0.h,
         decoration: BoxDecoration(
           color: AppColors.whiteTextColor,
           borderRadius: BorderRadius.circular(8),
@@ -35,9 +35,7 @@ class Schedule extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 20, ),//replace 4 for 12= check it
-          child: ListView(
-            //mainAxisAlignment: MainAxisAlignment.start,
-           // crossAxisAlignment: CrossAxisAlignment.start,
+          child: Column(
             children: [
              Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

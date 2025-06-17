@@ -9,6 +9,8 @@ class AuthController extends GetxController{
     var isPasswordMatch = false.obs;
     var isOtpCorrect = false.obs;
     var validValue ='1234';
+    var timeLeft = 60.obs;
+    var isTimerRunning = false;
 
     //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   

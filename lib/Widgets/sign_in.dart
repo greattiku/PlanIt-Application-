@@ -5,6 +5,7 @@ import 'package:plan_it/Constants/colors.dart';
 import 'package:plan_it/Constants/custom_textstyles.dart';
 import 'package:plan_it/Screens/sign_in_screen.dart';
 import 'package:plan_it/Screens/sign_up_screen.dart';
+import 'package:plan_it/Screens/splash_screen.dart';
 import 'package:plan_it/Utilities/extensions.dart';
 import 'package:plan_it/Widgets/reusable_text_field.dart';
 import 'package:plan_it/Widgets/widgets.dart';
@@ -52,9 +53,9 @@ class SignIn extends StatelessWidget {
                       isPasswordField: true,
                       icon: 
                         IconButton(onPressed: (){
-                         controller.passwordToggleObscure();
+                         validationController.passwordToggleObscure();
                          }, icon: Icon(
-                           controller.isPasswordObscured.value ? Icons.visibility_off : Icons.visibility,
+                           validationController.isPasswordObscured.value ? Icons.visibility_off : Icons.visibility,
                           )),
                             
                      validator: validatePassword
@@ -69,6 +70,7 @@ class SignIn extends StatelessWidget {
                   if(_formKey.currentState!.validate()){
                     _formKey.currentState!.save();
                       signIn('','');
+                      Get.offAll(SplashScreen());
                   }
               }, 
               style: ButtonStyles.elevatedButtonStyle(
