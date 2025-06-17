@@ -2,15 +2,22 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+<<<<<<< HEAD
 import 'package:flutter/widgets.dart';
+=======
+>>>>>>> community
 import 'package:get/get.dart';
 import 'package:plan_it/Constants/app_validation.dart';
 import 'package:plan_it/Constants/colors.dart';
 import 'package:plan_it/Constants/custom_textstyles.dart';
+<<<<<<< HEAD
 import 'package:plan_it/Screens/pages_screen.dart';
 import 'package:plan_it/Screens/splash_screen.dart';
 import 'package:plan_it/Utilities/extensions.dart';
 import 'package:plan_it/Widgets/sign_up.dart';
+=======
+import 'package:plan_it/Utilities/extensions.dart';
+>>>>>>> community
 import 'package:plan_it/Widgets/widgets.dart';
 
 class Otp extends StatelessWidget {
@@ -78,6 +85,7 @@ class Otp extends StatelessWidget {
             SizedBox(height: 15.0.h,),
                    ElevatedButton(onPressed: (){
                 final completer = Completer<String>();
+<<<<<<< HEAD
                           if (validateOtp()) {
                           //  signUp('', '');
       Get.offAll(SplashScreen());
@@ -89,6 +97,13 @@ class Otp extends StatelessWidget {
   
 
                      
+=======
+                   if (validateOtp()) {
+                 // Get.offAll(SplashScreen());
+                  } else {
+                    completer.completeError('invalid otp');
+                  }
+>>>>>>> community
                 }, 
                 style: ButtonStyles.elevatedButtonStyle(
                   backgroundColor: AppColors.appPrimaryColor,

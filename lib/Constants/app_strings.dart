@@ -76,3 +76,23 @@ List<Categories> categories = [
     UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: false),
     UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: true),
   ].obs;
+
+
+     var sugestedFollowers = <UserModel>[
+    UserModel(name: 'Amina TiTi', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: false ),
+    UserModel(name: 'Aisha Grace', email: 'great@gmail.com', profilePicture: 'aasset/svgs/profile_pic2.svg', isFollowing: false),
+    UserModel(name: 'Arthur Milo', email: 'great@gmail.com', profilePicture: 'aasset/svgs/profile_pics3.svg',isFollowing: false ),
+    UserModel(name: 'Amaka Phillips', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic4.svg', isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'aasset/svgs/profile_pic5.svg',isFollowing: false ),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic6.svg',isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic7.svg', isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg',isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg',isFollowing: false ),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg',isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: false ),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg',isFollowing: false ),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: false),
+    UserModel(name: 'Lucy Peter', email: 'great@gmail.com', profilePicture: 'asset/svgs/profile_pic1.svg', isFollowing: false),
+  ].obs;

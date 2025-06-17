@@ -4,13 +4,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:plan_it/Constants/colors.dart';
 import 'package:plan_it/Constants/custom_textstyles.dart';
-import 'package:plan_it/Controllers/cmmunity_controller.dart';
-import 'package:plan_it/Models/schedule/user_model.dart';
 import 'package:plan_it/Utilities/extensions.dart';
 
-class UserList extends StatelessWidget {
-  UserList({
-    super.key,
+import '../Controllers/cmmunity_controller.dart';
+import '../Models/schedule/user_model.dart';
+
+class SuggestedFollowers extends StatelessWidget {
+   SuggestedFollowers({super.key,
     required this.userModel,
     required this.index,
   });
@@ -19,8 +19,6 @@ class UserList extends StatelessWidget {
   final int index;
 
   var controller = Get.find<CommunityController>();
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +52,7 @@ class UserList extends StatelessWidget {
               ],
             ),
              InkWell(
-                onTap: () => controller.toggleFollow(index),
+                onTap: () => controller.toggleSuggestedFollowers(index),
                 child: Container(
                   width: 80,
                   height: 32,

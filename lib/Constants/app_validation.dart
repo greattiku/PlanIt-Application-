@@ -77,7 +77,6 @@ import '../Controllers/auth_controller.dart';
               return false;
         } else if (otpValue == validationController.validValue) {
            validationController.isOtpCorrect.value = true;
-          // Get.snackbar('success', 'Account created');
            signUp('', '');
               return true;
         } else {

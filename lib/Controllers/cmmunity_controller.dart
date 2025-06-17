@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plan_it/Constants/colors.dart';
 import 'package:plan_it/Models/schedule/user_model.dart';
+import 'package:plan_it/Widgets/suggested_followers.dart';
 
 import '../Constants/app_strings.dart';
 
@@ -14,6 +15,11 @@ class CommunityController extends GetxController{
     userList.refresh();
   }
 
+  void toggleSuggestedFollowers(int index){
+    sugestedFollowers[index].isFollowing = !sugestedFollowers[index].isFollowing;
+    sugestedFollowers.refresh();
+  }
+
   void changeSelectedIndex(int index){
     selectedIndex.value = index;
   }
@@ -24,11 +30,5 @@ class CommunityController extends GetxController{
   getTextColor(int index){
     return selectedIndex.value == index ? AppColors.whiteTextColor : AppColors.blackTextColor;
   }
-    var isFollowed = 'Following'.obs;
-    var notFollowed = 'Follow'.obs;
-    var userFollowing = ''.obs;
-    
-    UserModel userModel = UserModel();
-   
 
 }
