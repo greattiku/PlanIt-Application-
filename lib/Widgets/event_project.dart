@@ -75,13 +75,12 @@ class EventProject extends StatelessWidget {
                ),
               ],
             ),
-                Expanded(
-                  child: Positioned(
-                    top: 0,
-                    right: 0,
-                    child: SvgPicture.asset(AppImages.backgroundHeartIcon,width: 113.0.w,height: 113.0.h,
-                                     ),
-                  )),
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: SvgPicture.asset(AppImages.backgroundHeartIcon,width: 113.0.w,height: 113.0.h,
+                                   ),
+                ),
                 Positioned(
                   left: 0,
                   right: 0,

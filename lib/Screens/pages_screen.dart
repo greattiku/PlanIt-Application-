@@ -27,11 +27,6 @@ class _PagesScreenState extends State<PagesScreen> {
       const CommunityScreen()
     ];
 
-  // @override
-  // void initState(){
-  //   super.initState();
-  //   SignUpScreen();
-  // }
   @override
   Widget build(BuildContext context) {
     
